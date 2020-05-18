@@ -1,0 +1,78 @@
+# Output directory
+output/*.db
+output/*.mat
+
+# Common file extensions that are not part of markdown documentation
+*.html
+*.pdf
+*.txt
+*.xlsx
+*.zip
+*.zip
+
+# DTED format
+*.dt2
+*.dt1
+
+# FAA DOF
+data/FAA-DOF/*.Dat
+
+# NOAA GLOBE
+data/DEM-GLOBE/*.hdr
+data/DEM-GLOBE/*g
+
+# SRTM
+*.DEM
+*.HDR
+*.hgt
+
+# ESRI shapefiles
+# https://www.loc.gov/preservation/digital/formats/fdd/fdd000280.shtml
+*.shp
+*.shx
+*.dbf
+*.sbn
+*.sbx
+*.atx
+*.fbn
+*.fbx
+*.ain
+*.aih
+*.ixs
+*.mxs
+*.prj
+*.xml
+*.cpg
+
+# MATLAB
+# Windows default autosave extension
+*.asv
+
+# OSX / *nix default autosave extension
+*.m~
+
+# Compiled MEX binaries (all platforms)
+*.mex*
+
+# Packaged app and toolbox files
+*.mlappinstall
+*.mltbx
+
+# Generated helpsearch folders
+helpsearch*/
+
+# Simulink code generation folders
+slprj/
+sccprj/
+
+# Matlab code generation folders
+codegen/
+
+# Simulink autosave extension
+*.autosave
+
+# Simulink cache files
+*.slxc
+
+# Octave session info
+octave-workspace
