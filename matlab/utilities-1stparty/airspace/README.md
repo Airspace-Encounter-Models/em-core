@@ -1,19 +1,6 @@
-# FAA Airports
+# Airspace
 
-Airport defines area on land or water intended to be used either wholly or in part for the arrival; departure and surface movement of aircraft/helicopters. This airport data is provided as a vector geospatial-enabled file format.
-
-## Download Instructions
-
-### Script (Recommended)
-
-[`script/setup.sh`](../../script/setup.sh) is used to set up the project in an initial state. It will download and extract the data.
-
-### Manual
-
-Although not recommended, the data can be downloaded manually:
-
-1. Go to the FAA open data website: [Airports](https://ais-faa.opendata.arcgis.com/datasets/e747ab91a11045e8b3f8a3efd093d3b5_0)
-2. Select shapefile from the Download drop down
+MATLAB code that inputs [FAA NASR airspace class shapefiles][nasr], processes altitude, filters by airspace class, and outputs to [sqlite][sqlite] and [MAT-file (.mat)][mat] formats.
 
 ## Distribution Statement
 
@@ -28,3 +15,8 @@ Delivered to the U.S. Government with Unlimited Rights, as defined in DFARS Part
 Any opinions, findings, conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the Federal Aviation Administration.
 
 This document is derived from work done for the FAA (and possibly others), it is not the direct product of work done for the FAA. The information provided herein may include content supplied by third parties.  Although the data and information contained herein has been produced or processed from sources believed to be reliable, the Federal Aviation Administration makes no warranty, expressed or implied, regarding the accuracy, adequacy, completeness, legality, reliability or usefulness of any information, conclusions or recommendations provided herein. Distribution of the information contained herein does not constitute an endorsement or warranty of the data or information provided herein by the Federal Aviation Administration or the U.S. Department of Transportation.  Neither the Federal Aviation Administration nor the U.S. Department of Transportation shall be held liable for any improper or incorrect use of the information contained herein and assumes no responsibility for anyone’s use of the information. The Federal Aviation Administration and U.S. Department of Transportation shall not be liable for any claim for any loss, harm, or other damages arising from access to or use of data or information, including without limitation any direct, indirect, incidental, exemplary, special or consequential damages, even if advised of the possibility of such damages. The Federal Aviation Administration shall not be liable to anyone for any decision made or action taken, or not taken, in reliance on the information contained herein.
+
+<!-- Relative Links -->
+[nasr]: ../../../data/FAA-NASR/README.md
+[sqlite]: https://www.sqlite.org/index.html
+[mat]: https://www.mathworks.com/help/matlab/matlab_env/save-load-and-delete-workspace-variables.html

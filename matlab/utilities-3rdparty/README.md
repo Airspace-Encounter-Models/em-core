@@ -2,10 +2,18 @@
 
 Complete list of all third party code embedded in or accessed by the disclosed software when such software is run. This list must include, without limitation, all open source code, free executable code, public domain code, library code, and all other executable or source code not written by any of the authors, whether such code is directly embedded in the software or accessed by the software when it is executed.
 
+The MIT airspace encounter model team has not knowingly modified any of the third party code. While the licenses vary, we include the third party code in this repository directly or as git submodules for convenience. Any modifications to git submodules ([as these git commits are separate](https://git-scm.com/book/en/v2/Git-Tools-Submodules) from this repository) shall be in compliance with their respective license.
+
 ## List of Code
 
-| Code        |  Description | Software Source           | License Source  | Git Submodule? |
-| :-------------| :--  |:-------------| :-----| :--- |
+| Code        |  Description | Software Source   | License Source  | [Git Submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules)? | Modified? |
+| :-------------| :--  |:-------------| :-----| :--- | :--- |
+arclength | Compute the arclength of a general curve in any number of dimensions | [File Exchange](https://www.mathworks.com/matlabcentral/fileexchange/34871-arclength) | [BSD-2 Clause](https://www.mathworks.com/matlabcentral/fileexchange/34871-arclength#license_modal) | No | No
+InPolygon-MEX | Fast detection points inside a polygonal region | [File Exchange](https://www.mathworks.com/matlabcentral/fileexchange/20754-fast-inpolygon-detection-mex) | [BSD-3-Clause](https://www.mathworks.com/matlabcentral/fileexchange/20754-fast-inpolygon-detection-mex) | No | No
+interparc | Distance based interpolation along a general curve in space | [File Exchange](https://www.mathworks.com/matlabcentral/fileexchange/34874-interparc) | [BSD-2 Clause](https://www.mathworks.com/matlabcentral/fileexchange/34874-interparc#license_modal) | No | No
+m_shaperead | Reads an ESRI-format shapefile, copied from m_map toolbox | [M_Map](https://www.eoas.ubc.ca/~rich/map.html) | [MIT-like](m_shaperead/LICENSE) | No | No
+mksqlite | A MATLAB Mex-DLL to access SQLite databases | [GitHub](https://github.com/AndreasMartin72/mksqlite) | [LGPL-3.0](https://github.com/AndreasMartin72/mksqlite/blob/master/LICENSE) | Yes | No
+mym | MySQL API for MATLAB with support for BLOB objects | [GitHub](https://github.com/datajoint/mym) | [GPLv2](https://github.com/datajoint/mym/blob/master/LICENSE.txt) | Yes | No
 
 ## Distribution Statement
 

@@ -6,6 +6,8 @@ Software and data used by multiple repositories in the [Aerospace Encounter Mode
   - [Initial Setup](#initial-setup)
     - [Persistent System Environment Variables](#persistent-system-environment-variables)
     - [Scripts](#scripts)
+    - [MATLAB MEX](#matlab-mex)
+    - [Process FAA Data](#process-faa-data)
   - [Data](#data)
   - [Language Specific Directories](#language-specific-directories)
   - [Output](#output)
@@ -30,6 +32,21 @@ You can confirm `AEM_DIR_CORE` was set in unix by inspecting the output of `env`
 ### Scripts
 
 This is a set of boilerplate scripts describing the [normalized script pattern that GitHub uses in its projects](https://github.blog/2015-06-30-scripts-to-rule-them-all/). The [GitHub Scripts To Rule Them All](https://github.com/github/scripts-to-rule-them-all) was used as a template. Refer to the [script directory README](./script/README.md) for more details.
+
+You will need to run these scripts in this order to download dependencies, initialize git submodules, download the default digital elevation models, airspace data, etc.
+
+1. [bootstrap](./scripts/README.md#scriptbootstrap)
+2. [setup](./scripts/README.md#scriptsetup)
+
+### MATLAB MEX
+
+Compile the [MEX functions](https://www.mathworks.com/help/matlab/call-mex-file-functions.html) detailed in the [MATLAB directory README](./matlab/README.md).
+
+### Process FAA Data
+
+1. Run in MATLAB `RUN_Airspace_1.m` to parse and process the [FAA class airspace definitions](./data/FAA-NASR/README.md)
+2. Run in MATLAB `RUN_readfaaacreg.m` to parse and process the [FAA aircraft registry](./data/FAA-AircraftRegistry/README.md)
+3. Run in MATLAB `RUN_readfaadof.m` to parse and process the [FAA digital obstacle file](./data/FAA-DOF/README.md)
 
 ## Data
 

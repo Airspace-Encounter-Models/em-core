@@ -1,0 +1,7 @@
+[submodule "matlab/utilities-3rdparty/mym"]
+	branch = master
+	path = matlab/utilities-3rdparty/mym
+	url = https://github.com/datajoint/mym
+[submodule "matlab/utilities-3rdparty/mksqlite"]
+	path = matlab/utilities-3rdparty/mksqlite
+	url = https://github.com/AndreasMartin72/mksqlite

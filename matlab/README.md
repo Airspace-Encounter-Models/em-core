@@ -8,6 +8,8 @@ This repository includes [MEX functions](https://www.mathworks.com/help/matlab/c
 
 | Code        |  Path |
 | :-------------| :--  |
+InPolygon-MEX | em-core\matlab\utilities-3rdparty\InPolygon-MEX
+mksqlite | em-core\matlab\utilities-3rdparty\mksqlite
 
 ## Distribution Statement
 

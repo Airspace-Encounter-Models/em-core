@@ -4,7 +4,7 @@ Directories to store commonly used external datasets.
 
 ## Digital Elevation Models (DEM-)
 
-A key feature of this repository is downloading and organizing digital elevation models (DEMs) to calculate the terrain elevation in mean sea level (MSL) and when using other repositories to generate aircraft track altitudes. For defaults, the [scripts](../script/README.md) will download [GLOBE](./DEM-GLOBE/README.md). For scalability, default directories for many DEMS are provided in this repository, however only the default DEMs will be populated during initial setup#initial-setup.
+A key feature of this repository is downloading and organizing digital elevation models (DEMs) to calculate the terrain elevation in mean sea level (MSL) and when using other repositories to generate aircraft track altitudes. For defaults, the [scripts](../script/README.md) will download [GLOBE](./DEM-GLOBE/README.md). For scalability, default directories for many DEMS are provided in this repository, however only the default DEMs will be populated during initial setup.
 
 These defaults are based on the availability of [Matlab Mapping Toolbox functions to read and identify files](https://www.mathworks.com/help/map/determine-what-elevation-data-exists-for-a-region.html). We recognize that GLOBE does not have the same resolution as [USGS 3D Elevation Program (3DEP) Datasets from The National Map / National Elevation Dataset (NED)](https://www.sciencebase.gov/catalog/item/4f70a58ce4b058caae3f8ddb) OR SRTM1 / SRTM3. These differences are summarized by extending a table found in the [SRTM documentation](https://dds.cr.usgs.gov/srtm/version2_1/Documentation/SRTM_Topo.pdf):
 
