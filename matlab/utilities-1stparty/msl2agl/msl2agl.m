@@ -1,6 +1,7 @@
+% Copyright 2018 - 2020, MIT Lincoln Laboratory
+% SPDX-License-Identifier: BSD-2-Clause
 function [el_ft_msl,alt_ft_agl,Z_m,refvec] = msl2agl(lat_deg, lon_deg, dem, varargin)
 % MSL2AGL converts from MSL to AGL ft for lat / lon coordinates
-% DEVELOPMENT SOFTWARE: MATLAB R2018a
 
 %% Set up input parser
 p = inputParser;
@@ -30,6 +31,9 @@ addOptional(p,'inFileOcean',[getenv('AEM_DIR_CORE') filesep 'data' filesep 'NE-O
 addOptional(p,'maxMissingPercent',0.8,@isnumeric); % Maximum allowable percent of missing (NaN) values in Z_m
 addOptional(p,'isCheckOcean',true,@islogical); % If true, check which points are in the ocean as defined by inFileOcean
 addOptional(p,'isFillAverage',true,@islogical); % If true, will attempt to replace NaN using a moving average
+
+% Optional - Verbose
+addOptional(p,'isVerbose',true,@islogical); % If true, will attempt to replace NaN using a moving average
 
 % Parse
 parse(p,lat_deg,lon_deg,dem,varargin{:});
@@ -88,7 +92,7 @@ if ~iscell(lat_deg)
             Z_m = [];
             refvec = [];
             
-            fprintf('All points over the ocean...RETURN\n');
+            if p.Results.isVerbose; fprintf('All points over the ocean...RETURN\n'); end
             return;
         end
     end
@@ -157,7 +161,9 @@ else
     isHasFile = cellfun(@(x)(isfile([demDir filesep x])),fname);
     if ~all(isHasFile)
         % if ~any(isHasFile)
-        warning('MSL2AGL:nodata','Missing %s for (%0.2f, %0.2f) to (%0.2f, %0.2f), only have %i/%i files...Setting output to [] and calling RETURN\n',dem,latlim_deg(1),lonlim_deg(1),latlim_deg(2),lonlim_deg(2),sum(isHasFile),numel(isHasFile));
+        if p.Results.isVerbose
+            warning('MSL2AGL:nodata','Missing %s for (%0.2f, %0.2f) to (%0.2f, %0.2f), only have %i/%i files...Setting output to [] and calling RETURN\n',dem,latlim_deg(1),lonlim_deg(1),latlim_deg(2),lonlim_deg(2),sum(isHasFile),numel(isHasFile));
+        end
         el_ft_msl = [];
         alt_ft_agl = [];
         Z_m = [];
@@ -194,6 +200,14 @@ else
     end
 end
 
+% Fill in grid points over the ocean (ocean shape file read-in earlier only for cell array input)
+if ~iscell(lat_deg) && p.Results.isCheckOcean
+    idxNaN = find(isnan(Z_m)==true);
+    [lat_missing, lon_missing] = findm(isnan(Z_m),refvec);
+    isOcean = InPolygon(lon_missing, lat_missing, ocean.Lon, ocean.Lat);
+    Z_m(idxNaN(isOcean)) = 0;
+end
+
 %% Check we got all the needed data
 % refvecToGeoRasterReference
 rasterSize = size(Z_m);
@@ -206,9 +220,11 @@ R = refvecToGeoRasterReference(refvec, rasterSize);
 % This check is useful when there is barely any data that it is better to
 % just not use any of it. Users can effectively disable this behavior by
 % setting maxMissingPercent = 1
-indNaN = find(isnan(Z_m)==true);
-if (numel(indNaN) / numel(Z_m)) >= p.Results.maxMissingPercent
-    warning('MSL2AGL:maxMissingPercent','%0.2f percent of Z_m has missing values\nSetting outputs to []...calling return\n',100*(numel(indNaN) / numel(Z_m)));
+idxNaN = find(isnan(Z_m)==true);
+if (numel(idxNaN) / numel(Z_m)) >= p.Results.maxMissingPercent
+    if p.Results.isVerbose
+        warning('MSL2AGL:maxMissingPercent','%0.2f percent of Z_m has missing values\nSetting outputs to []...calling return\n',100*(numel(idxNaN) / numel(Z_m)));
+    end
     el_ft_msl = [];
     alt_ft_agl = [];
     Z_m = [];
@@ -242,7 +258,7 @@ if iscell(lat_deg)
 else
     % Determine if geographic or map raster contains points
     tf = contains(R,lat_deg,lon_deg);
-    if ~all(tf)
+    if ~all(tf) & p.Results.isVerbose
         warning('MSL2AGL:tf', 'Not all points fall within the bounds of the geographic raster = %s\n', dem);
     end
     
@@ -272,4 +288,3 @@ else
         alt_ft_agl = p.Results.alt_ft_msl - el_ft_msl;
     end
 end
-

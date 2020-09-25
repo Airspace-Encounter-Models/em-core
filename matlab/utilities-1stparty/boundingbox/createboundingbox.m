@@ -1,3 +1,5 @@
+% Copyright 2018 - 2020, MIT Lincoln Laboratory
+% SPDX-License-Identifier: BSD-2-Clause
 function [BoundingBox_wgs84, BoundingBox_map] = createboundingbox(lat0_deg,lon0_deg,rad_nm,mstruct)
 
 % A small circle is the locus of all points an equal surface distance from a given center.

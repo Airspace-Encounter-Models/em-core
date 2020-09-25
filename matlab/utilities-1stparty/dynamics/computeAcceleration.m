@@ -1,3 +1,5 @@
+% Copyright 2018 - 2020, MIT Lincoln Laboratory
+% SPDX-License-Identifier: BSD-2-Clause
 function a = computeAcceleration(speed,time_s,varargin)
 %COMPUTEACCELERATION  Computes acceleration of the given 1-D time series
 %array of speeds and associated time array using the Matlab gradient 

@@ -1,3 +1,5 @@
+% Copyright 2018 - 2020, MIT Lincoln Laboratory
+% SPDX-License-Identifier: BSD-2-Clause
 function [outLat_deg, outLon_deg, inBox] = filterboundingbox(inLat_deg,inLon_deg,BoundingBox)
 
 % Create complete bounding box polygon

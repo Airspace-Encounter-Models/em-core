@@ -1,3 +1,5 @@
+% Copyright 2018 - 2020, MIT Lincoln Laboratory
+% SPDX-License-Identifier: BSD-2-Clause
 function [codeAir, codeOpt] = parseCert(cert)
 
 codeAir = '';

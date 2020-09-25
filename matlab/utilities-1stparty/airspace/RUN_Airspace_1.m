@@ -1,10 +1,14 @@
+% Copyright 2018 - 2020, MIT Lincoln Laboratory
+% SPDX-License-Identifier: BSD-2-Clause
 %% Inputs
 % Input File
 inFile = [getenv('AEM_DIR_CORE') filesep 'data' filesep 'FAA-NASR' filesep 'Class_Airspace'];
 
 % readAirspace parameters
 keepClasses = ["B","C","D","E"]; % Airspace classes to keep,
-bboxLoc = 'USA';
+
+% Countries to include in bounding box
+iso_a2 = {'US','CA','MX','AW','AG','BB','BS','BM','CU','CW','JM','KY','PA','PR','TC','TT'};
 
 % Output directory and name
 outDir = [getenv('AEM_DIR_CORE') filesep 'output'];
@@ -17,25 +21,18 @@ table    = 'airspace_table';  % sql table name
 %% Define Bounding Box
 % 2-by-2 matrix of [lonmin,latmin;lonmax,latmax] for geographic coordinates
 % https://en.wikipedia.org/wiki/List_of_extreme_points_of_the_United_States
-switch bboxLoc
-    case 'USA'
-        bbox = [-171.791110603,18.9161;-66.96466,71.3577635769]; % United States
-    case 'CONUS'
-        bbox = [-124.785,24.446667;-66.947028,49.384472]; % CONUS
-    case 'MA'
-        bbox = [-73.5,41.2;-69.9,42.9]; % Massachusetts (used for testing)
-end
+[latOut_deg,lonOut_deg] = genBoundaryIso3166A2('iso_a2',iso_a2,'mode','convhull','isPlot',false);
+
+bbox = [min(lonOut_deg), min(latOut_deg); max(lonOut_deg), max(latOut_deg)];
 
 %% Read Airspace
-airspace = readAirspace(inFile,...
+airspace = readAirspace('inFile',inFile,...
     'bbox_deg',bbox,...
-    'keepClasses',keepClasses,...
-    'dem1','strm1',...
-    'dem2','globe');
+    'keepClasses',keepClasses);
 fprintf('# airspaces: %i\n',size(airspace,1));
 
 %% Save to MATLAB .mat file
-save([outDir filesep outName '.mat'],'airspace','bboxLoc','bbox');
+save([outDir filesep outName '.mat'],'inFile','airspace','iso_a2','bbox','keepClasses');
 
 %% Save to SQLite
 % Delete database file, if it still exists
