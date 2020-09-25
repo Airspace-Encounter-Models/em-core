@@ -35,8 +35,8 @@ This is a set of boilerplate scripts describing the [normalized script pattern t
 
 You will need to run these scripts in this order to download dependencies, initialize git submodules, download the default digital elevation models, airspace data, etc.
 
-1. [bootstrap](./scripts/README.md#scriptbootstrap)
-2. [setup](./scripts/README.md#scriptsetup)
+1. [bootstrap](./script/README.md#scriptbootstrap)
+2. [setup](./script/README.md#scriptsetup)
 
 ### MATLAB MEX
 
