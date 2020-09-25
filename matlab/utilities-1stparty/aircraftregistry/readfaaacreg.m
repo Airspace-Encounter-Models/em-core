@@ -1,3 +1,5 @@
+% Copyright 2018 - 2020, MIT Lincoln Laboratory
+% SPDX-License-Identifier: BSD-2-Clause
 function readfaaacreg(varargin)
 
 %% Input parser
@@ -123,7 +125,7 @@ for i = 1:numLines
                 regType(i) = "NonCitizenCoOwned";
         end
     else
-        regType(i) = "BLANK";
+        regType(i) = "";
     end
     
     % A - Airworthiness Classification Code

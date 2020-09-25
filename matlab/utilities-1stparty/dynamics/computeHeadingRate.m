@@ -1,3 +1,5 @@
+% Copyright 2018 - 2020, MIT Lincoln Laboratory
+% SPDX-License-Identifier: BSD-2-Clause
 function [dpsi_rad_s,deltaHeading,dt] = computeHeadingRate(heading_rad,time_s)
 
 %% Input parser
@@ -30,4 +32,3 @@ dpsi_rad_s = deltaHeading ./ dt;
 
 %% Append
 dpsi_rad_s = [dpsi_rad_s; dpsi_rad_s(end)];
-

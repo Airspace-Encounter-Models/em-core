@@ -1,11 +1,12 @@
 #!/bin/sh
+# Copyright 2018 - 2020, MIT Lincoln Laboratory
+# SPDX-License-Identifier: BSD-2-Clause
 
 # script/setup:
-# Set up application for the first time after cloning, 
+# Set up application for the first time after cloning,
 # or set it back to the initial first unused state.
 
 ####### DOWNLOAD FAA Aircraft Registry
-
 URL_AIRCRAFT_REG='http://registry.faa.gov/database/ReleasableAircraft.zip'
 
 # Download file from FAA website
@@ -21,7 +22,6 @@ URL_AIRCRAFT_DB='https://www.faa.gov/airports/engineering/aircraft_char_database
 
 # Download file from FAA website
 wget $URL_AIRCRAFT_DB -O $AEM_DIR_CORE/data/FAA-AircraftCharacteristicsDB/faa_acdb_current.xlsx
-
 
 ###### DOWNLOAD FAA AIRPORTS
 # https://ais-faa.opendata.arcgis.com/datasets/e747ab91a11045e8b3f8a3efd093d3b5_0
@@ -53,13 +53,25 @@ URL_NASR_EDITION='https://soa.smext.faa.gov/apra/nfdc/nasr/chart?edition=current
 # Step #2: Using xpath, parse xml file for url attribute
 # Step #3: Using command substitution, assign the URL string to a variable
 # https://stackoverflow.com/q/4651437
-URL_NASR_CURRENT=$(curl -s $URL_NASR_EDITION | xpath -q -e 'string(//productSet/edition/product/@url)')
+
+# https://stackoverflow.com/a/3466183/363829
+case "$(uname -s)" in
+   Darwin)
+    # Do something under Mac OS X platform
+	URL_NASR_CURRENT=$(curl -s $URL_NASR_EDITION | xmllint --format - | xpath 'string(//product/@url)')
+     ;;
+
+   Linux)
+	# xpath for xml parsing
+	URL_NASR_CURRENT=$(curl -s $URL_NASR_EDITION | xpath -q -e 'string(//productSet/edition/product/@url)')
+     ;;
+esac
 
 # Download file from FAA website
 wget $URL_NASR_CURRENT -O $AEM_DIR_CORE/data/FAA-NASR/faa_nasr_current.zip
 
 # unzip only airspace class shape files
-# -j strips all path info, and all files go into the target 
+# -j strips all path info, and all files go into the target
 # -o to silently force overwrite
 # https://unix.stackexchange.com/a/59285/1408
 unzip -j -o $AEM_DIR_CORE/data/FAA-NASR/faa_nasr_current.zip 'Additional_Data/Shape_Files/*' -d $AEM_DIR_CORE/data/FAA-NASR/
@@ -96,7 +108,7 @@ unzip -o $AEM_DIR_CORE/data/NE-Ocean/ne_land_ocean.zip -d $AEM_DIR_CORE/data/NE-
 # https://www.ngdc.noaa.gov/mgg/topo/gltiles.html
 URL_NOAA_GLOBE='https://www.ngdc.noaa.gov/mgg/topo/DATATILES/elev/all10g.zip'
 
-# Download file 
+# Download file
 wget $URL_NOAA_GLOBE -O $AEM_DIR_CORE/data/DEM-GLOBE/noaa_globe_current.zip
 
 # unzip
@@ -121,7 +133,7 @@ for hdr in $globehdr; do
 	echo $URL_CURRENT
 	echo $FILE_DOWNLOAD
 
-	# Download file 
+	# Download file
 	wget $URL_CURRENT -O $FILE_DOWNLOAD
 done
 IFS=$oldifs
