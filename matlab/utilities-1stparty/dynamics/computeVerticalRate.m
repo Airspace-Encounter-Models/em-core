@@ -1,6 +1,6 @@
 % Copyright 2018 - 2020, MIT Lincoln Laboratory
 % SPDX-License-Identifier: BSD-2-Clause
-function dh = computeAcceleration(altitude,time_s,varargin)
+function dh = computeVerticalRate(altitude,time_s,varargin)
 
 %% Input parser
 p = inputParser;
