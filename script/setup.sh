@@ -90,6 +90,15 @@ wget $URL_NE_admin1 -O $AEM_DIR_CORE/data/NE-Adminstrative/ne_admin1_current.zip
 # https://unix.stackexchange.com/a/59285/1408
 unzip -o $AEM_DIR_CORE/data/NE-Adminstrative/ne_admin1_current.zip -d $AEM_DIR_CORE/data/NE-Adminstrative/
 
+####### DOWNLOAD Global Self-consistent, Hierarchical, High-resolution Geography Database (GSHHG)
+URL_GSHHG="https://www.ngdc.noaa.gov/mgg/shorelines/data/gshhg/latest/gshhg-shp-2.3.7.zip"
+
+# Download file
+wget $URL_GSHHG -O $AEM_DIR_CORE/data/GSHHG/gshhg_current.zip
+
+# Unzip all files (does not use -j option)
+unzip -o $AEM_DIR_CORE/data/GSHHG/gshhg_current.zip -d $AEM_DIR_CORE/data/GSHHG/
+
 ####### DOWNLOAD NATURAL EARTH DATA OCEAN POLYGONS
 # https://www.naturalearthdata.com/
 
