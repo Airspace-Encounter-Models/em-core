@@ -29,6 +29,19 @@ export AEM_DIR_CORE=PATH TO /em-core
 
 You can confirm `AEM_DIR_CORE` was set in unix by inspecting the output of `env`.
 
+### MINGW Requirements
+
+To run the code within a MINGW environment, a working installation of Perl is required. If Perl is not already installed in your environment (e.g., when using Git Bash for Windows), you can download [Strawberry Perl](https://strawberryperl.com/), install it and add it to your PATH.
+
+Additionally, xpath is needed. Once Perl is installed, xpath may be downloaded with cpan:
+
+```bash
+cpan Scalar::Util
+cpan XML::XPath
+```
+
+This step must be done before running the setup script when using MINGW.
+
 ### Scripts
 
 This is a set of boilerplate scripts describing the [normalized script pattern that GitHub uses in its projects](https://github.blog/2015-06-30-scripts-to-rule-them-all/). The [GitHub Scripts To Rule Them All](https://github.com/github/scripts-to-rule-them-all) was used as a template. Refer to the [script directory README](./script/README.md) for more details.
@@ -38,16 +51,6 @@ You will need to run these scripts in this order to download dependencies, initi
 1. [bootstrap](./script/README.md#scriptbootstrap)
 2. [setup](./script/README.md#scriptsetup)
 
-### MINGW Requirements
-
-To run the code within a MINGW environment, a working installation of Perl is required. If Perl is not already installed in your environment (i.e., when using Git Bash for Windows), you can download [Strawberry Perl](https://strawberryperl.com/), install it and add it to your PATH.
-
-Additionally, xpath is needed. Once Perl is installed, xpath may be downloaded with cpan:
-
-```bash
-cpan Scalar::Util
-cpan XML::XPath
-```
 ### MATLAB MEX
 
 Compile the [MEX functions](https://www.mathworks.com/help/matlab/call-mex-file-functions.html) detailed in the [MATLAB directory README](./matlab/README.md).
