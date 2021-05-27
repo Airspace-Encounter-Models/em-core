@@ -23,6 +23,18 @@ case "$(uname -s)" in
     # unzip to extract zip archives
     apt install unzip
      ;;
+   MINGW*)
+   # Check if perl is installed
+   if perl -v &>/dev/null
+   then
+      # Install required xpath library
+      echo "Installing xpath..."
+      cpan Scalar::Util
+      cpan XML::XPath
+   else
+      echo "Perl does not seem to be installed. Install Perl, or add Perl to your path."
+   fi
+   ;;
 esac
 
 # git submodules
