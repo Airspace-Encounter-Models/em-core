@@ -65,6 +65,11 @@ case "$(uname -s)" in
 	# xpath for xml parsing
 	URL_NASR_CURRENT=$(curl -s $URL_NASR_EDITION | xpath -q -e 'string(//productSet/edition/product/@url)')
      ;;
+
+   MINGW*)
+	# MINGW (Windows) does not have xpath installed by default, so use grep and sed. This is somewhat hacky.
+	URL_NASR_CURRENT=$(curl -s $URL_NASR_EDITION | grep -o 'url=".\{0,256\}\.zip' | sed -e 's/^url="//')
+	;;
 esac
 
 # Download file from FAA website
