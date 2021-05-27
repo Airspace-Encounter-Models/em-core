@@ -31,16 +31,8 @@ You can confirm `AEM_DIR_CORE` was set in unix by inspecting the output of `env`
 
 ### MINGW Requirements
 
-To run the code within a MINGW environment, a working installation of Perl is required. If Perl is not already installed in your environment (e.g., when using Git Bash for Windows), you can download [Strawberry Perl](https://strawberryperl.com/), install it and add it to your PATH.
-
-Additionally, xpath is needed. Once Perl is installed, xpath may be downloaded with cpan:
-
-```bash
-cpan Scalar::Util
-cpan XML::XPath
-```
-
-This step must be done before running the setup script when using MINGW.
+To run the code within a MINGW environment, a working installation of Perl is required. If Perl is not already installed in your environment (e.g., when using Git Bash for Windows), you can download [Strawberry Perl](https://strawberryperl.com/), install it and add it to your PATH. This step must be done before running the setup script when using MINGW. 
+The bootstrap.sh script will install xpath and Scalar::Util using Perl's cpan tool.
 
 ### Scripts
 
