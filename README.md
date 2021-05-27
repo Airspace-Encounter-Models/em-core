@@ -38,6 +38,16 @@ You will need to run these scripts in this order to download dependencies, initi
 1. [bootstrap](./script/README.md#scriptbootstrap)
 2. [setup](./script/README.md#scriptsetup)
 
+### MINGW Requirements
+
+To run the code within a MINGW environment, a working installation of Perl is required. If Perl is not already installed in your environment (i.e., when using Git Bash for Windows), you can download [Strawberry Perl](https://strawberryperl.com/), install it and add it to your PATH.
+
+Additionally, xpath is needed. Once Perl is installed, xpath may be downloaded with cpan:
+
+```bash
+cpan Scalar::Util
+cpan XML::XPath
+```
 ### MATLAB MEX
 
 Compile the [MEX functions](https://www.mathworks.com/help/matlab/call-mex-file-functions.html) detailed in the [MATLAB directory README](./matlab/README.md).
