@@ -67,8 +67,8 @@ case "$(uname -s)" in
      ;;
 
    MINGW*)
-	# MINGW (Windows) does not have xpath installed by default, so use grep and sed. This is somewhat hacky.
-	URL_NASR_CURRENT=$(curl -s $URL_NASR_EDITION | grep -o 'url=".\{0,256\}\.zip' | sed -e 's/^url="//')
+	# MINGW (Windows). Running the command "xpath" does not seem to be guaranteed to work. xpath.bat is, however.
+	URL_NASR_CURRENT=$(curl -s $URL_NASR_EDITION | xpath.bat -q -e 'string(//productSet/edition/product/@url)')
 	;;
 esac
 
