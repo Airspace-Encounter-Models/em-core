@@ -5,6 +5,7 @@ Software and data used by multiple repositories in the [Aerospace Encounter Mode
 - [em-core](#em-core)
   - [Initial Setup](#initial-setup)
     - [Persistent System Environment Variables](#persistent-system-environment-variables)
+    - [MINGW Requirements](#mingw-requirements)
     - [Scripts](#scripts)
     - [MATLAB MEX](#matlab-mex)
     - [Process FAA Data](#process-faa-data)
@@ -28,6 +29,10 @@ export AEM_DIR_CORE=PATH TO /em-core
 ```
 
 You can confirm `AEM_DIR_CORE` was set in unix by inspecting the output of `env`.
+
+### MINGW Requirements
+
+To run the code within a MINGW environment, a working installation of Perl is required. If Perl is not already installed in your environment (e.g., when using Git Bash for Windows), you can download [Strawberry Perl](https://strawberryperl.com/), install it and add it to your PATH. This step must be done before running the setup script when using MINGW. The `bootstrap.sh` (see below) script will install `xpath` and` Scalar::Util` using Perl's cpan tool.
 
 ### Scripts
 

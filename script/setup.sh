@@ -65,6 +65,11 @@ case "$(uname -s)" in
 	# xpath for xml parsing
 	URL_NASR_CURRENT=$(curl -s $URL_NASR_EDITION | xpath -q -e 'string(//productSet/edition/product/@url)')
      ;;
+
+   MINGW*)
+	# MINGW (Windows). Running the command "xpath" does not seem to be guaranteed to work. xpath.bat is, however.
+	URL_NASR_CURRENT=$(curl -s $URL_NASR_EDITION | xpath.bat -q -e 'string(//productSet/edition/product/@url)')
+	;;
 esac
 
 # Download file from FAA website
