@@ -28,7 +28,6 @@ addOptional(p,'boundsLon_deg',[-178 -30]); % If true, filter to have only points
 
 % Optional - Buffer
 addOptional(p,'isBuffer', true); % If true, create buffer around polygons using bufferm
-addOptional(p,'isReduce', true); % If true, create buffer around polygons using bufferm
 addOptional(p,'bufwidth_deg', nm2deg(60)); % bufdwith parameter for bufferm()
 
 % Optional - Plot
@@ -73,13 +72,10 @@ lon_deg = lon_deg(isInBound);
 
 %% Buffer (if desired)
 if p.Results.isBuffer
-    kb = boundary(lat_deg,lon_deg,1);
+    kb = boundary(lat_deg,lon_deg,p.Results.shrink);
     [latb,lonb] = bufferm(lat_deg(kb),lon_deg(kb),p.Results.bufwidth_deg,'out');
     lat_deg = latb;
     lon_deg = lonb;
-else
-    lat_deg = latJoin;
-    lon_deg = lonJoin;
 end
 
 %% Remove NaN
@@ -98,16 +94,12 @@ end
 latOut_deg = lat_deg(k);
 lonOut_deg = lon_deg(k);
 
-isBLat = latOut_deg >= p.Results.boundsLat_deg(1) & latOut_deg <= p.Results.boundsLat_deg(2);
-isBLon = lonOut_deg >= p.Results.boundsLon_deg(1) & lonOut_deg <= p.Results.boundsLon_deg(2);
-isInBound = isBLat & isBLon;
-
-% Filter
-latOut_deg = latOut_deg(isInBound);
-lonOut_deg = lonOut_deg(isInBound);
+% Close polygon and add trailing nan
+latOut_deg = [latOut_deg; latOut_deg(1); nan];
+lonOut_deg = [lonOut_deg; lonOut_deg(1); nan];
 
 %% Plot
 if p.Results.isPlot
     figure; set(gcf,'name','Iso3166-1 A2 Polygon');
-    geoplot(latOut_deg,lonOut_deg);
+    geoplot(latOut_deg,lonOut_deg,'.');
 end

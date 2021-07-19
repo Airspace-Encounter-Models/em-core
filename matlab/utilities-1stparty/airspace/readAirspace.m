@@ -1,6 +1,6 @@
+function [T] = readAirspace(varargin)
 % Copyright 2018 - 2020, MIT Lincoln Laboratory
 % SPDX-License-Identifier: BSD-2-Clause
-function [T] = readAirspace(varargin)
 
 %% Set up input parser
 p = inputParser;
@@ -52,6 +52,11 @@ CLASS = categorical(S.dbfdata(:,colClass));
 BOUNDINGBOX_deg = mat2cell(S.mbr(:,1:4),ones(size(S.mbr,1),1),size(S.mbr,2)-2);
 LAT_deg = cellfun(@(x)(x(:,2)),S.ncst,'uni',false);
 LON_deg = cellfun(@(x)(x(:,1)),S.ncst,'uni',false);
+
+% Make sure they're column vectors
+l = cellfun(@isrow,LAT_deg);
+LAT_deg(l) = cellfun(@transpose,LAT_deg(l),'uni',false);
+LON_deg(l) = cellfun(@transpose,LON_deg(l),'uni',false);
 
 %% Altitude
 % Convert altitude strings to doubles

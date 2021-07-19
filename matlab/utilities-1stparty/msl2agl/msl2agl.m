@@ -1,7 +1,7 @@
-% Copyright 2018 - 2020, MIT Lincoln Laboratory
-% SPDX-License-Identifier: BSD-2-Clause
 function [el_ft_msl,alt_ft_agl,Z_m,refvec] = msl2agl(lat_deg, lon_deg, dem, varargin)
 % MSL2AGL converts from MSL to AGL ft for lat / lon coordinates
+% Copyright 2018 - 2021, MIT Lincoln Laboratory
+% SPDX-License-Identifier: BSD-2-Clause
 
 %% Set up input parser
 p = inputParser;
@@ -15,6 +15,7 @@ addRequired(p,'dem',@(x) isstr(x) && any(strcmpi(x,{'dted1','dted2','globe','gto
 addOptional(p,'Z_m',{},@isnumeric);
 addOptional(p,'refvec',{},@isnumeric);
 addOptional(p,'alt_ft_msl',{},@(x) isnumeric(x) | iscell(x));
+addOptional(p,'ocean',struct,@isstruct);
 
 % Optional - Explicitly define DEM directory if not using defaults in em-core/data
 addOptional(p,'demDir',{},@isstr);
@@ -70,9 +71,14 @@ end
 if ~iscell(lat_deg)
     if p.Results.isCheckOcean
         % Load ocean polygon
+        if ~any(strcmpi(p.UsingDefaults,'ocean'))
+            ocean = p.Results.ocean;
+        else
+            ocean = shaperead(p.Results.inFileOcean,'UseGeoCoords',true);
+        end
+        
         % This will be used to determine which coordiantes are over the ocean
         % This is computationally efficient as we will interpolate the DEM for points over land
-        ocean = shaperead(p.Results.inFileOcean,'UseGeoCoords',true);
         isOcean = InPolygon(lon_deg,lat_deg,ocean.Lon,ocean.Lat);
         el_m_agl(isOcean) = 0;
         
@@ -128,7 +134,6 @@ else
     
     % Check to make sure DEM data exists
     % Return if it doesn't
-    listing = dir([demDir filesep '**']);
     switch dem
         case 'dted1'
             % Elevations in meters
@@ -162,7 +167,7 @@ else
     if ~all(isHasFile)
         % if ~any(isHasFile)
         if p.Results.isVerbose
-            warning('MSL2AGL:nodata','Missing %s for (%0.2f, %0.2f) to (%0.2f, %0.2f), only have %i/%i files...Setting output to [] and calling RETURN\n',dem,latlim_deg(1),lonlim_deg(1),latlim_deg(2),lonlim_deg(2),sum(isHasFile),numel(isHasFile));
+            warning('MSL2AGL:nodata','Missing %s for (%0.2f, %0.2f) to (%0.2f, %0.2f), only have %i/%i files...Setting output to [] and calling RETURN',dem,latlim_deg(1),lonlim_deg(1),latlim_deg(2),lonlim_deg(2),sum(isHasFile),numel(isHasFile));
         end
         el_ft_msl = [];
         alt_ft_agl = [];

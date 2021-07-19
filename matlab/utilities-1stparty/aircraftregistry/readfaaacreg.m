@@ -1,6 +1,6 @@
+function readfaaacreg(varargin)
 % Copyright 2018 - 2020, MIT Lincoln Laboratory
 % SPDX-License-Identifier: BSD-2-Clause
-function readfaaacreg(varargin)
 
 %% Input parser
 p = inputParser;
@@ -83,7 +83,7 @@ engType = strings(numLines,1);
 
 % Not parsed: Assign: Registration
 % regName = string(textMaster{7}); % Registrant Name
-% regState = string(textMaster{11}); % Registrantâ€™s State
+% regState = string(textMaster{11}); % Registrant’s State
 % codeStatus = string(textMaster{21}); % Status Code
 
 % Not parsed: Kit
@@ -93,7 +93,7 @@ engType = strings(numLines,1);
 % Not parsed: Other names
 % textMaster(8); % Street1
 % textMaster(9); % Street2
-% textMaster(10); % Registrantâ€™s City
+% textMaster(10); % Registrant’s City
 % textMaster(12); % Zip Code
 % textMaster(13); % Region
 % textMaster(14); % County Mail

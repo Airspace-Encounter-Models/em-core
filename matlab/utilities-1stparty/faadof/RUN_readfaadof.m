@@ -9,6 +9,9 @@ outFile = [getenv('AEM_DIR_CORE') filesep 'output' filesep 'dof-' date '.mat'];
 % Execute
 Tdof = readfaadof('inFile',inFile,'isSave',isSave,'outFile',outFile);
 
+% Save with default filename without date
+save([getenv('AEM_DIR_CORE') filesep 'output' filesep 'dof.mat'],'Tdof');
+
 % Create some logicals
 isTower = strcmpi(Tdof.obs_type,'tower');
 isVerified = strcmpi(Tdof.verification_status,'verified');
