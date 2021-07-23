@@ -16,7 +16,7 @@ parse(p,varargin{:});
 
 %% Load aircraft reference file
 fid = fopen([p.Results.inDir filesep 'ACFTREF.txt'],'r'); % Open File
-textACREF = textscan(fid,'%07.0s %030.0s %020.0s %01.0s %02.0s %01.0s %01.0s %02.0s %03.0f %07.0s %04.0s','HeaderLines',1,'Delimiter',',');
+textACREF = textscan(fid,'%07.0s %030.0s %020.0s %01.0s %02.0s %01.0s %01.0s %02.0s %03.0f %07.0s %04.0s %015.0s %050.0s','HeaderLines',1,'Delimiter',',');
 fclose(fid); % Close file
 
 % Parse

@@ -2,6 +2,10 @@
 output/*.db
 output/*.mat
 
+#Submodulues
+matlab/utilities-3rdparty/mym/*
+matlab/utilities-3rdparty/mksqlite/*
+
 # Common file extensions that are not part of markdown documentation
 *.html
 *.pdf
