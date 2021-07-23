@@ -2,7 +2,6 @@
 output/*.db
 output/*.mat
 
-
 # Common file extensions that are not part of markdown documentation
 *.html
 *.pdf
