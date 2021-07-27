@@ -7,6 +7,10 @@ and this project should adhere to [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Fixed
+
+- The FAA aircraft reference file had two fields added to it in December 2020. `readfaaacreg` fixed to support reading this data formatted prior to or after 2020/12/03. Fix from [@aadeabreu](https://github.com/aadeabreu)
+
 ## [1.1.0] - 2021-07-19
 
 ### Added
