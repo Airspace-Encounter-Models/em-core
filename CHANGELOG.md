@@ -7,9 +7,18 @@ and this project should adhere to [Semantic Versioning](https://semver.org/spec/
 
 ## [Unreleased]
 
-### Fixed
+### Added
 
-- The FAA aircraft reference file had two fields added to it in December 2020. `readfaaacreg` fixed to support reading this data formatted prior to or after 2020/12/03. Fix from [@aadeabreu](https://github.com/aadeabreu)
+- `allcomb(varagin)` returns all combinations of inputted arrays. Function licensed under BSD-2 that permits redistribution and redistributed from [MathWorks File Exchange](https://www.mathworks.com/matlabcentral/fileexchange/10064-allcomb-varargin).
+- Run script, `RUN_mex` to compile MATLAB mex functions
+- Moved `run_dynamics_fast` from em-pairing-uncor-importancesampling
+
+### Changed
+
+- Updated `run_dynamics_fast` with two additional inputs corresponding to dynamic limit constraints. Dynamic constraints were previously hardcoded constants in `run_dynamics_fast.c`
+- Replaced `ltln2val` with `geointerp` in `msl2agl` because MATLAB will remove `ltln2val` in the future
+- Improved missing data handling in `msl2agl` by using `georasterinfo` and `standardizeMissing`
+- Updated copyright year
 
 ## [1.1.0] - 2021-07-19
 

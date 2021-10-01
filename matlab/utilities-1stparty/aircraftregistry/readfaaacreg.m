@@ -1,6 +1,8 @@
 function readfaaacreg(varargin)
 % Copyright 2018 - 2021, MIT Lincoln Laboratory
 % SPDX-License-Identifier: BSD-2-Clause
+%
+% SEE ALSO parseCert
 
 %% Input parser
 p = inputParser;

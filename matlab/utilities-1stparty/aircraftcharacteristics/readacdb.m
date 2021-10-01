@@ -8,9 +8,6 @@ p = inputParser;
 % Name of input file
 addOptional(p,'inFile',[getenv('AEM_DIR_CORE') filesep 'data' filesep 'FAA-AircraftCharacteristicsDB' filesep 'faa_acdb_current.xlsx']);
 
-% Name if output file
-%addOptional(p,'outFile',[getenv('AEM_DIR_CORE') filesep 'output' filesep 'acregfaa-' date '.mat']);
-
 % Parse
 parse(p,varargin{:});
 

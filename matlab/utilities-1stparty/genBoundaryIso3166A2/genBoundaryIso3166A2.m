@@ -1,7 +1,6 @@
-% Copyright 2018 - 2020, MIT Lincoln Laboratory
-% SPDX-License-Identifier: BSD-2-Clause
 function [latOut_deg,lonOut_deg] = genBoundaryIso3166A2(varargin);
-
+% Copyright 2018 - 2021, MIT Lincoln Laboratory
+% SPDX-License-Identifier: BSD-2-Clause
 %% Input parser
 % Create input parser
 p = inputParser;

@@ -12,7 +12,7 @@ DTED Level 0 is available to the public but higher spatial resolution levels are
 
 DISTRIBUTION STATEMENT A. Approved for public release. Distribution is unlimited.
 
-© 2018, 2019, 2020 Massachusetts Institute of Technology.
+© 2018, 2019, 2020, 2021 Massachusetts Institute of Technology.
 
 This material is based upon work supported by the Federal Aviation Administration under Air Force Contract No. FA8702-15-D-0001.
 

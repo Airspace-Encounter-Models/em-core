@@ -1,12 +1,12 @@
 # MSL2AGL
 
-MATLAB function that converts from MSL to AGL ft for latitude and longitude coordinates. It uses various MATLAB Mapping Toolbox functions, such as [`dted`](https://www.mathworks.com/help/map/ref/dted.html), [`ltln2val`](https://www.mathworks.com/help/map/ref/ltln2val.html), and [`refvecToGeoRasterReference`](https://www.mathworks.com/help/map/ref/refvectogeorasterreference.html).
+MATLAB function that converts from MSL to AGL ft for latitude and longitude coordinates. It uses various MATLAB Mapping Toolbox functions, such as [`geointerp`](https://www.mathworks.com/help/map/ref/geointerp.html) and [`shaperead`](https://www.mathworks.com/help/map/ref/shaperead.html).
 
 ## Distribution Statement
 
 DISTRIBUTION STATEMENT A. Approved for public release. Distribution is unlimited.
 
-© 2018, 2019, 2020 Massachusetts Institute of Technology.
+© 2018, 2019, 2020, 2021 Massachusetts Institute of Technology.
 
 This material is based upon work supported by the Federal Aviation Administration under Air Force Contract No. FA8702-15-D-0001.
 

@@ -1,13 +1,15 @@
-% Copyright 2018 - 2020, MIT Lincoln Laboratory
-% SPDX-License-Identifier: BSD-2-Clause
 function [outLat_deg, outLon_deg, inBox] = filterboundingbox(inLat_deg,inLon_deg,BoundingBox)
+% Copyright 2018 - 2021, MIT Lincoln Laboratory
+% SPDX-License-Identifier: BSD-2-Clause
+%
+% Bounding box, specified as the comma-separated pair consisting of 'BoundingBox' and a 2-by-2 matrix. BoundingBox has the form [xmin,ymin;xmax,ymax], for map coordinates, or [lonmin,latmin;lonmax,latmax] for geographic coordinates. 
 
 % Create complete bounding box polygon
-latlim = BoundingBox(:,1);
-lonlim = BoundingBox(:,2);
+latlim = BoundingBox(:,2);
+lonlim = BoundingBox(:,1);
 
-bboxlat = [lonlim(1) lonlim(2) lonlim(2) lonlim(1) lonlim(1)];
-bboxlon = [latlim(1) latlim(1) latlim(2) latlim(2) latlim(1)];
+bboxlat = [latlim(1) latlim(1) latlim(2) latlim(2) latlim(1)];
+bboxlon = [lonlim(1) lonlim(2) lonlim(2) lonlim(1) lonlim(1)];
 
 % Determine if any points are within bounding box
 if iscell(inLon_deg)

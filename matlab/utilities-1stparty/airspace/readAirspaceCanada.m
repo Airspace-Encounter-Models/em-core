@@ -1,5 +1,5 @@
 function [T] = readAirspaceCanada(varargin)
-% Copyright 2018 - 2020, MIT Lincoln Laboratory
+% Copyright 2018 - 2021, MIT Lincoln Laboratory
 % SPDX-License-Identifier: BSD-2-Clause
 % Units assumed to be in feet
 % Whenever it is AGL, the file indicates those. The rest is assumed to be MSL.

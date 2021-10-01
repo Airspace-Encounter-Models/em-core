@@ -1,16 +1,19 @@
 function [S_dof, Tdof] = gridDOF(varargin)
+% Copyright 2019 - 2021, MIT Lincoln Laboratory
+% SPDX-License-Identifier: BSD-2-Clause
+
 %% Input parser
 p = inputParser;
 
-addOptional(p,'inFile',[getenv('AEM_DIR_CORE') filesep 'output' filesep 'dof-' '25-Feb-2020' '.mat']);
-addOptional(p,'spheroid_ft',wgs84Ellipsoid('ft'));
-addOptional(p,'npts',50,@isnumeric);
+addParameter(p,'inFile',[getenv('AEM_DIR_CORE') filesep 'output' filesep 'dof.mat']);
+addParameter(p,'spheroid_ft',wgs84Ellipsoid('ft'));
+addParameter(p,'npts',50,@isnumeric);
 
 % Filter criteria
-addOptional(p,'obsTypes',{''}); % Obstacle types to keep, if empty will do no filter
-addOptional(p,'BoundingBox_wgs84',[-178, 17; -52, 72],@isnumeric); % Bounding box
-addOptional(p,'minHeight_ft',50,@isnumeric); % Minimum height of obstacles to keep
-addOptional(p,'isVerified',true,@islogical); % If true, remove unverified obstacles
+addParameter(p,'obsTypes',{''}); % Obstacle types to keep, if empty will do no filter
+addParameter(p,'BoundingBox_wgs84',[-178, 17, ; -52, 72],@isnumeric); % Bounding box
+addParameter(p,'minHeight_ft',50,@isnumeric); % Minimum height of obstacles to keep
+addParameter(p,'isVerified',true,@islogical); % If true, remove unverified obstacles
 
 parse(p,varargin{:});
 

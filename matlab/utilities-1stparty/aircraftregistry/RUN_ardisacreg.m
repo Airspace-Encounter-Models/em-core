@@ -1,4 +1,4 @@
-% Copyright 2018 - 2020, MIT Lincoln Laboratory
+% Copyright 2018 - 2021, MIT Lincoln Laboratory
 % SPDX-License-Identifier: BSD-2-Clause
 %% Inputs
 % https://ardis.iomaircraftregistry.com/

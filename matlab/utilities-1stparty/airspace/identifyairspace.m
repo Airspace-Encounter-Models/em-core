@@ -1,6 +1,6 @@
-% Copyright 2018 - 2020, MIT Lincoln Laboratory
-% SPDX-License-Identifier: BSD-2-Clause
 function [isInAirspace, airspaceNames] = identifyairspace(airspace, LAT_deg,LON_deg,ALT_ft,ALT_unit)
+% Copyright 2018 - 2021, MIT Lincoln Laboratory
+% SPDX-License-Identifier: BSD-2-Clause
 % CALCINAIRSPACE returns true if coordinates are within airspace
 %   airspace = table generated using RUN_AIRSPACE_1
 %   LAT_deg = latitude in decimal degrees

@@ -1,7 +1,6 @@
-% Copyright 2018 - 2020, MIT Lincoln Laboratory
-% SPDX-License-Identifier: BSD-2-Clause
 function [dpsi_rad_s,deltaHeading,dt] = computeHeadingRate(heading_rad,time_s)
-
+% Copyright 2018 - 2021, MIT Lincoln Laboratory
+% SPDX-License-Identifier: BSD-2-Clause
 %% Input parser
 p = inputParser;
 

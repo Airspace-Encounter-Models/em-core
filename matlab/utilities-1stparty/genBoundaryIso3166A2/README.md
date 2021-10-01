@@ -6,7 +6,7 @@ Function to create a bounding polygon based on ISO 3611-1 alpha 2 Level 0 admini
 
 DISTRIBUTION STATEMENT A. Approved for public release. Distribution is unlimited.
 
-© 2018, 2019, 2020 Massachusetts Institute of Technology.
+© 2018, 2019, 2020, 2021 Massachusetts Institute of Technology.
 
 This material is based upon work supported by the Federal Aviation Administration under Air Force Contract No. FA8702-15-D-0001.
 
