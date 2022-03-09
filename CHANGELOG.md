@@ -16,9 +16,14 @@ and this project should adhere to [Semantic Versioning](https://semver.org/spec/
 ### Changed
 
 - Updated `run_dynamics_fast` with two additional inputs corresponding to dynamic limit constraints. Dynamic constraints were previously hardcoded constants in `run_dynamics_fast.c`
+- Updated some variable names in `run_dynamics_fast` with a more consistent naming and style convention
 - Replaced `ltln2val` with `geointerp` in `msl2agl` because MATLAB will remove `ltln2val` in the future
 - Improved missing data handling in `msl2agl` by using `georasterinfo` and `standardizeMissing`
 - Updated copyright year
+
+### Fixed
+
+- Fixed bug when allocating output buffer allocation size in `run_dynamics_fast.c` that was originally identified by @reliable-nranganathan
 
 ## [1.1.0] - 2021-07-19
 

@@ -10,8 +10,5 @@ run([getenv('AEM_DIR_CORE') filesep 'matlab' filesep 'utilities-3rdparty' filese
 
 % run_dynamics_fast
 mexDir = [getenv('AEM_DIR_CORE') filesep 'matlab' filesep 'utilities-1stparty' filesep 'runDynamicsFast'];
-if ispc
-    eval(sprintf('mex %s -outdir %s',[mexDir filesep 'run_dynamics_fast.c'],mexDir))
-else
-    eval(sprintf('mex -g %s -outdir %s',[mexDir filesep 'run_dynamics_fast.c'],mexDir))
-end
+eval(sprintf('mex %s -outdir %s',[mexDir filesep 'run_dynamics_fast.c'],mexDir))
+%eval(sprintf('mex -g %s -outdir %s',[mexDir filesep 'run_dynamics_fast.c'],mexDir)) % Uncomment for debugging
